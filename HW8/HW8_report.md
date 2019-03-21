@@ -4,7 +4,8 @@
 _Name_: Casey Chadwell  
 _SID_: 3033291861   
 _Class_: IEOR 135   
-_GitHub_:    
+_GitHub_: [caseyc49s/casey_chadwell_dataX/HW8/](https://github.com/caseyc49s/casey_chadwell_dataX/tree/master/HW8)
+
 
 ---
 
@@ -97,7 +98,7 @@ Stemming the reviews resulted in a 0.003 increase in validation accuracy while a
 
 For this part, the results were obtained by changing the parameter `ngram` from `1` to `2` in the `train_predict_sentiment` function.
 
-For original reviews with unigram and 1000 max features, the functions were defined as follows:
+For original reviews with bigram and 1000 max features, the functions were defined as follows:
 
 ```
 original_clean_reviews=review_cleaner(
@@ -114,10 +115,10 @@ train_predict_sentiment(
 )
 ```
 
-The original cleaning settings produced the following accuracies from the random forest classifier:
+These cleaning settings produced the following accuracies from the random forest classifier:
 
 > The training accuracy is:  1.0   
-> The validation accuracy is:  0.8166
+> The validation accuracy is:  0.8248
 
 #### __A. lemmatized reviews__:
 
@@ -143,7 +144,7 @@ Lemmatizing the reviews and increasing `ngram` to 2 produced the following accur
 > The validation accuracy is:  0.8196
 
 __Brief Overview__:
-Increasing `ngram` to 2 produced a slight 0.003 increase in validation accuracy compared to the original cleaning function, however the validation accuracy is lower than with `ngram = 1` for lemmatized reviews.
+The validation accuracy for lemmatized reviews with `ngram = 2` is slightly lower than the original cleaning settings with `ngram = 2` and slightly lower than with `ngram = 1` for lemmatized reviews.
 
 #### __B. Stemmed Reviews__:
 
@@ -169,7 +170,7 @@ Lemmatizing the reviews and increasing `ngram` to 2 produced the following accur
 > The validation accuracy is:  0.8196
 
 __Brief Overview__:
-Stemming with `ngram = 2` produced the same validation accuracy as stemming with `ngram = 1`.
+As with lemmatizing, stemming with `ngram = 2` did not seem to produce a significant change in validation error compared to the original cleaning settings.
 
 ---
 
@@ -214,4 +215,4 @@ Increasing the `max_features` parameter seems to increase the accuracy of the mo
 
 # Overall Summary
 
-Stemming and lemmatizing the words before training the model does not appear to have a significant impact on the accuracy, despite the amount of time it takes to compute these word changes. Likewise, switching to 2-gram bag of words features also doesn't seem to have a significant imacte on the accuracy of the model. Of all the modifications made, the most significant change in accuracy came from altering the `max features` setting. The validation accuracy increased with the number of features, which is to be expected as more features leads to a more robust decision tree framework in the random forest algorithm. However, this increase does not grow proportionally with the number of features and more features means a more biased model. The original 1000 `max_features` was only 2% less accurate than the modified 5000 `max_features` and provided less biased results. In conclusion, the methods used in this experiment did not seem to have a significant impact on the accuracy of the model. Other methods may be more useful and less computationally expensive.
+Stemming and lemmatizing the words before training the model does not appear to have a significant impact on the accuracy, despite the amount of time it takes to compute these word changes. Likewise, switching to 2-gram bag of words features also doesn't seem to have a significant impact on the accuracy of the model. Of all the modifications made, the most significant change in accuracy came from altering the `max features` setting. The validation accuracy increased with the number of features, which is to be expected as more features leads to a more robust decision tree framework in the random forest algorithm. However, this increase does not grow proportionally with the number of features and more features means a more biased model. The original 1000 `max_features` was only roughly 2% less accurate than the modified 5000 `max_features` and provided less biased results. In conclusion, the methods used in this experiment did not seem to have a significant impact on the accuracy of the model. Other methods may be more useful and less computationally expensive.
